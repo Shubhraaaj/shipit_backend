@@ -1,0 +1,45 @@
+{
+  "Delhi": {
+    "Delhi": 0,
+    "Chandigarh": 60,
+    "Jaipur": 110,
+    "Manali": 60,
+    "Mumbai": 160,
+    "Hydrabad": 150,
+    "Chennai": 250,
+    "Kolkata": 150,
+    "Lucknow": 100,
+    "Indore": 130
+  },
+  "Chandigarh": {
+    "Delhi": 60,
+    "Chandigarh": 0,
+    "Jaipur": 110,
+    "Manali": 120,
+    "Mumbai": 110,
+    "Hydrabad": 150,
+    "Chennai": 200,
+    "Kolkata": 250,
+    "Lucknow": 200,
+    "Indore": 120
+  },
+  "Jaipur": {
+    "Delhi": 60,
+    "Chandigarh": 0,
+    "Jaipur": 0,
+    "Manali": 120,
+    "Mumbai": 110,
+    "Hydrabad": 150,
+    "Chennai": 200,
+    "Kolkata": 250,
+    "Lucknow": 200,
+    "Indore": 120
+  },
+  "Manali": {},
+  "Mumbai": {},
+  "Hydrabad": {},
+  "Chennai": {},
+  "Kolkata": {},
+  "Lucknow": {},
+  "Indore": {}
+}

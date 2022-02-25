@@ -1,0 +1,180 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Vendor {
+  vendor_id: String!
+  tariff_chart_id: String!
+  name: String!
+  phone_number: String!
+  email: String!
+  amount: String!
+  password: String!
+  website: String!
+  address: String!
+  service_cities: [String!]!
+  logo: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Auths {
+  id: String!
+  user_email: String!
+  vendor_id: String!
+  auth_token: String!
+  is_active: Boolean!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type TariffChart {
+  id: String!
+  tariff: String!
+  distance_1: [Float!]!
+  distance_2: [Float!]!
+  distance_3: [Float!]!
+  distance_4: [Float!]!
+  distance_5: [Float!]!
+  distance_6: [Float!]!
+  vendor_id: String!
+  priority_factor: Float!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type VendorPagination {
+  id: String!
+  total_elements: Float!
+  result: String!
+}
+
+type Order {
+  order_id: String!
+  order_no: String!
+  sender: String!
+  live_status: String!
+  receiver: String!
+  order_status: String!
+  tracking_id: String!
+  amount: String!
+  vendor_id: String!
+  weight: String!
+  type: String!
+  priority: String!
+  weight_unit: String!
+  destination_city: String!
+  source_city: String!
+  created_by: String!
+  pickup_date_time: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type User {
+  id: String!
+  email: String!
+  otp: Float!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Query {
+  getAllVendors(vendorQueryInput: VendorQueryInput!): VendorPagination!
+  getVendorProfile(id: String!): Vendor!
+  getAllTariffChart: [TariffChart!]!
+  getTariffChartByVendorId(id: String!): TariffChart!
+  getOrders(vendor_id: String!, status: String!): [Order!]!
+  getOrderByOrderNo(id: String!): Order!
+  trackOrderByTrackId(id: String!): Order!
+  verifyUserOtp(otp: Float!, email: String!): User!
+}
+
+input VendorQueryInput {
+  srcCity: String!
+  destCity: String!
+  pageNo: String
+  pageSize: String
+  name: String
+  price: String
+  sortBy: String
+  weight: Float
+  type: String
+}
+
+type Mutation {
+  signup(vendorInput: CreateVendorInput!): Vendor!
+  login(loginInput: LoginVendorInput!): Auths!
+  updateProfile(updateVendorInput: UpdateVendorInput!): Vendor!
+  deleteVendor(id: String!): Vendor!
+  uploadTariffChart(createTariffChartInput: CreateTariffChartInput!): TariffChart!
+  updateTariffChart(createTariffChartInput: CreateTariffChartInput!): TariffChart!
+  deleteTariffChartById(id: String!): TariffChart!
+  CreateOrder(createOrderInput: CreateOrderInput!): Order!
+  modifyOrderByOrderNo(updateOrderInput: UpdateOrderInput!): Order!
+  DeleteOrderByOrderNo(id: String!): Order!
+  userLogin(userLoginInput: LoginUserInput!): User!
+}
+
+input CreateVendorInput {
+  name: String!
+  email: String!
+  phone_number: String!
+  password: String!
+}
+
+input LoginVendorInput {
+  user_email: String!
+  password: String!
+}
+
+input UpdateVendorInput {
+  name: String!
+  email: String!
+  phone_number: String!
+  password: String
+  vendor_id: String
+  website: String
+  address: String
+  service_cities: [String!]!
+  tariff_chart_id: String
+  logo: String!
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+input CreateTariffChartInput {
+  tariff: String!
+  vendor_id: String
+  priority_factor: Float!
+}
+
+input CreateOrderInput {
+  sender: String!
+  receiver: String!
+  pickup_date_time: String!
+  created_by: String!
+  amount: String!
+  vendor_id: String!
+  weight: String!
+  type: String!
+  priority: String!
+  weight_unit: String!
+  destination_city: String!
+  source_city: String!
+}
+
+input UpdateOrderInput {
+  order_no: String!
+  order_status: String
+  live_status: String
+}
+
+input LoginUserInput {
+  email: String!
+}

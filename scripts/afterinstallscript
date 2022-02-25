@@ -1,0 +1,3 @@
+#!/bin/bash
+pm2 restart Shipit -api-server;
+pm2 save

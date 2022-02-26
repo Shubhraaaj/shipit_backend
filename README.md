@@ -73,8 +73,8 @@ We tried to use a completely modern tech stack while testing out some new techno
      6. CI/CD: GitHub, 
 
 ### Authors
- 1. Shubhraj Prasad Singh
- 2. Satish Kumar
+ 1. [Shubhraj Prasad Singh](https://github.com/Shubhraaaj)
+ 2. [Satish Kumar](https://github.com/kkk0908)
 
 ### License
 MIT

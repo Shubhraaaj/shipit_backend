@@ -22,7 +22,7 @@ Live Demo
 
 ### Please Note:
  1. We recommend using this app in Google Chrome 
- 2. 2. Use the app on Laptop/desktop only as of now.
+ 2. Use the app on Laptop/desktop only as of now.
 
 ### Test Credentials:
    #### * For User

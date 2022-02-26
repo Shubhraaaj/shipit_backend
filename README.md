@@ -1,6 +1,7 @@
 
-![image](https://user-images.githubusercontent.com/32466035/155830419-4da3cf55-ff07-43cf-be72-52761de49c81.png)
 
+<img src="https://user-images.githubusercontent.com/32466035/155830419-4da3cf55-ff07-43cf-be72-52761de49c81.png" width="300" height="300">
+# Shipit
 The advent of on-demand applications has redefined customer convenience. The Courier
 delivery industry has transformed due to the repercussions of on-demand services. And to do
 that you would require an advanced courier & parcel delivery application that consists of all the

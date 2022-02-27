@@ -174,7 +174,7 @@ const sendEmail = async (to: string, subject: string, html: string) => {
       secure: true,
       auth: {
         user: 'devsatish1994@gmail.com',
-        pass: 'DevSatish@1994'
+        pass: ''
       }
     })
 

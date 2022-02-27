@@ -11,7 +11,7 @@ export class TariffChartResolver {
   constructor(private readonly tariffChartService: TariffChartService) { }
 
   @Mutation(() => TariffChart, { name: "uploadTariffChart" })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   createTariffChart(@Args('createTariffChartInput') createTariffChartInput: CreateTariffChartInput) {
     return this.tariffChartService.create(createTariffChartInput);
   }
@@ -22,19 +22,19 @@ export class TariffChartResolver {
   }
 
   @Query(() => TariffChart, { name: 'getTariffChartByVendorId' })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   findOne(@Args('id') id: string) {
     return this.tariffChartService.findOne(id);
   }
 
   @Mutation(() => TariffChart, { name: "updateTariffChart" })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   updateTariffChart(@Args('createTariffChartInput') createTariffChartInput: CreateTariffChartInput) {
     return this.tariffChartService.update(createTariffChartInput.vendor_id, createTariffChartInput);
   }
 
   @Mutation(() => TariffChart, { name: 'deleteTariffChartById' })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   async removeTariffChart(@Args('id') id: string) {
     return this.tariffChartService.remove(id);
   }

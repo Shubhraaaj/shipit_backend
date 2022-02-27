@@ -22,7 +22,7 @@ import { UserModule } from './user/user.module';
       }),
     TypeOrmModule.forRoot({
       type: "postgres",
-      host: 'localhost',
+      host: '13.234.187.25',
       port: 5432,
       username: "shipitadmin",
       password: "shipit@123",

@@ -76,6 +76,14 @@ type Order {
   updated_at: DateTime!
 }
 
+type OrderMatrix {
+  matrix_id: String!
+  numberOfOrdersByStatus: String!
+  topSourceCities: String!
+  topDestCities: String!
+  monthwiseOrders: String!
+}
+
 type User {
   id: String!
   email: String!
@@ -92,6 +100,7 @@ type Query {
   getOrders(vendor_id: String!, status: String!): [Order!]!
   getOrderByOrderNo(id: String!): Order!
   trackOrderByTrackId(id: String!): Order!
+  getOrdersMatrix(filterDate: Float!, vendor_id: String!): OrderMatrix!
   verifyUserOtp(otp: Float!, email: String!): User!
 }
 

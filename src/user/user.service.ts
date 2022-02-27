@@ -39,7 +39,7 @@ const sendEmail = async (to, subject, html) => {
       secure: true,
       auth: {
         user: 'devsatish1994@gmail.com',
-        pass: 'password'
+        pass: 'DevSatish@1994'
       }
     })
 

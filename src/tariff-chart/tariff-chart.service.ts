@@ -77,8 +77,10 @@ export class TariffChartService {
     return this.tariffChartRepository.find()
   }
 
-  findOne(id: string) {
-    return this.tariffChartRepository.findOne({ vendor_id: id })
+  async findOne(id: string) {
+    let result = await this.tariffChartRepository.findOne({ vendor_id: id })
+    if (!result) throw new BadRequestException("Tariff Chart Doesn't exists!")
+    return result
   }
 
   async update(id: string, createTariffChartInput: CreateTariffChartInput) {

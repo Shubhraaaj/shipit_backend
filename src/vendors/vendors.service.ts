@@ -266,11 +266,11 @@ export class VendorsService {
     }
 
     let srcVendors = await this.cityVendorRepository.find({ city: vendorQueryInput.srcCity.toLowerCase() })
-    console.log("srcVendors", srcVendors)
+
     let srcVendorsIds = srcVendors.map(v => v.vendor_id)
 
     let destVendors = await this.cityVendorRepository.find({ city: vendorQueryInput.destCity.toLowerCase() })
-    console.log("destVendors", destVendors)
+
     let vendorsId = new Set(destVendors.filter(v => srcVendorsIds.includes(v.vendor_id)).map(v => v.vendor_id))
 
     let findVendorPromise = []
@@ -293,7 +293,7 @@ export class VendorsService {
 
     for (let v of vendorsResult) {
       let tariffChart = await this.tariffChartRepository.findOne({ vendor_id: v.vendor_id })
-      console.log("tariffChart", tariffChart)
+
       if (tariffChart) {
 
         let distanceArray = []
@@ -311,9 +311,11 @@ export class VendorsService {
           distanceArray = tariffChart.distance_6
         }
         if (vendorQueryInput.type.toLowerCase() === "priority") {
-          v.amount = JSON.stringify({ amount: distanceArray[distanceArrayIndex] * tariffChart.priority_factor, distance })
+          // v.amount = JSON.stringify({ amount: distanceArray[distanceArrayIndex] * tariffChart.priority_factor, distance })
+          v.amount = { amount: distanceArray[distanceArrayIndex] * tariffChart.priority_factor, distance, priority_factor: tariffChart.priority_factor }
         } else {
-          v.amount = JSON.stringify({ amount: distanceArray[distanceArrayIndex], distance })
+          // v.amount = JSON.stringify({ amount: distanceArray[distanceArrayIndex], distance })
+          v.amount = { amount: distanceArray[distanceArrayIndex], distance, priority_factor: tariffChart.priority_factor }
         }
 
       } else {
@@ -336,6 +338,11 @@ export class VendorsService {
       /// 
     }
 
+    vendorsResult = vendorsResult.map(v => {
+      return { price: v.amount.amount, distance: v.amount.distance, priority_factor: v.amount.priority_factor, name: v.name, vendor_id: v.vendor_id }
+    })
+
+    vendorsResult = vendorsResult.filter(v => v.price)
     return { result: JSON.stringify(vendorsResult), total_elements: vendorsResult.length, id: "123" }
   }
 

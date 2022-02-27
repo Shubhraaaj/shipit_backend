@@ -32,19 +32,19 @@ export class VendorsResolver {
   }
 
   @Query(() => Vendor, { name: 'getVendorProfile' })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   findOne(@Args('id') id: string) {
     return this.vendorsService.getVendorProfile(id);
   }
 
   @Mutation(() => Vendor, { name: "updateProfile" })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   update(@Args('updateVendorInput') updateVendorInput: UpdateVendorInput) {
     return this.vendorsService.update(updateVendorInput.vendor_id, updateVendorInput);
   }
 
   @Mutation(() => Vendor, { name: "deleteVendor" })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   removeVendor(@Args('id') id: string) {
     return this.vendorsService.deleteVendor(id);
   }

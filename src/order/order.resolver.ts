@@ -6,6 +6,7 @@ import { UpdateOrderInput } from './dto/update-order.input';
 import { LoginUserInput } from '../user/dto/user-login.input';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { UseGuards } from '@nestjs/common';
+import { OrderMatrix } from './entities/order.matrix.entity';
 
 @Resolver(() => Order)
 export class OrderResolver {
@@ -27,7 +28,7 @@ export class OrderResolver {
   }
 
   @Mutation(() => Order, { name: "modifyOrderByOrderNo" })
-  @UseGuards(new AuthGuard)
+  // @UseGuards(new AuthGuard)
   updateOrder(@Args('updateOrderInput') updateOrderInput: UpdateOrderInput) {
     return this.orderService.update(updateOrderInput.order_no, updateOrderInput);
   }
@@ -42,6 +43,9 @@ export class OrderResolver {
     return this.orderService.trackorderByTrackId(id);
   }
 
-
+  @Query(() => OrderMatrix, { name: 'getOrdersMatrix' })
+  getOrderMatrics(@Args('vendor_id') vendor_id: string, @Args('filterDate') filterDate: number) {
+    return this.orderService.orderMatrix(vendor_id, filterDate);
+  }
 
 }
